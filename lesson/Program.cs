@@ -1,4 +1,4 @@
-﻿namespace lesson
+namespace lesson
 {
     public class Program
     {
@@ -14,10 +14,13 @@
         /// <param name="args">The arguments passed to the program</param>
         public static void Main(string[] args)
         {
-            int Scelta = 0;
             bool Game = true;
-            string Nome = "RED";
+            
+            string Nome;
+            int Scelta = 0;
+            
             Nome = LOGIN();
+            
             while (Game)
             {
                 MENU(Nome, ref Scelta);
@@ -31,6 +34,7 @@
                     case 3:
                         TITOLO();
                         Console.WriteLine("ARRIVEDERCI!!!");
+                        Console.ReadKey();
                         Game = false;
                         break;
                 }
@@ -46,18 +50,17 @@
         }
         static void MENU(string Nome, ref int Scelta)
         {
-            TITOLO();
-            Console.WriteLine($"> Benvenuto {Nome}, che cosa vuoi fare?");
-            Console.WriteLine("  1 - Consulta il pokédex");
-            Console.WriteLine("  2 - Vai a catturare qualche pokémon");
-            Console.WriteLine("  3 - Esci");
-
             do
             {
-                Console.Write("Effettua la tua scelta");
+                TITOLO();
+                Console.WriteLine($"> Benvenuto {Nome}, che cosa vuoi fare?");
+                Console.WriteLine("  1 - Consulta il pokédex");
+                Console.WriteLine("  2 - Vai a catturare qualche pokémon");
+                Console.WriteLine("  3 - Esci");
+                Console.Write($"{Nome}<\t");
+                Console.Clear();
             }
             while (!int.TryParse(Console.ReadLine(), out Scelta));
-            Console.Clear();
         }
         static string LOGIN()
         {
