@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "WhFgWZ6gOVA=",
+  "dgSpecHash": "hZXXMNP/ArM=",
   "success": true,
-  "projectFilePath": "C:\\Users\\v.cirnu.5623\\Downloads\\informatica-terze-5-ex-1-main\\lesson\\lesson.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "/Users/cirnuvasileeduard/Documents/REPOSITORY/Pokedex/lesson/lesson.csproj",
+  "expectedPackageFiles": [
+    "/Users/cirnuvasileeduard/.nuget/packages/microsoft.netcore.app.ref/6.0.36/microsoft.netcore.app.ref.6.0.36.nupkg.sha512",
+    "/Users/cirnuvasileeduard/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.36/microsoft.aspnetcore.app.ref.6.0.36.nupkg.sha512",
+    "/Users/cirnuvasileeduard/.nuget/packages/microsoft.netcore.app.host.osx-arm64/6.0.36/microsoft.netcore.app.host.osx-arm64.6.0.36.nupkg.sha512"
+  ],
   "logs": []
 }

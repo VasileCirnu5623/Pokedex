@@ -14,31 +14,7 @@ namespace lesson
         /// <param name="args">The arguments passed to the program</param>
         public static void Main(string[] args)
         {
-            bool Game = true;
-            
-            string Nome;
-            int Scelta = 0;
-            
-            Nome = LOGIN();
-            
-            while (Game)
-            {
-                MENU(Nome, ref Scelta);
-                switch (Scelta)
-                {
-                    case 1:
-                        POKEDEX();
-                        break;
-                    case 2:
-                        break;
-                    case 3:
-                        TITOLO();
-                        Console.WriteLine("ARRIVEDERCI!!!");
-                        Console.ReadKey();
-                        Game = false;
-                        break;
-                }
-            }
+            GAME();
         }
         static void TITOLO()
         {
@@ -58,9 +34,9 @@ namespace lesson
                 Console.WriteLine("  2 - Vai a catturare qualche pokémon");
                 Console.WriteLine("  3 - Esci");
                 Console.Write($"{Nome}<\t");
-                Console.Clear();
             }
             while (!int.TryParse(Console.ReadLine(), out Scelta));
+            Console.Clear();
         }
         static string LOGIN()
         {
@@ -72,9 +48,90 @@ namespace lesson
             Console.Clear();
             return Nome;
         }
-        static void POKEDEX()
+        static void POKEDEX(ref bool Pokedex, ref int NumeroPokemon, ref int ContatoreSaluto, int numberOfPokémons, string[] pokémonNames, string[] pokémonImages, string[] pokémonTypes, int[] pokémonCatchResistance)
         { 
-        
+            TITOLO();
+            Console.WriteLine("Benvenuto nel Pokédex!");
+            Pokedex = true;
+            while (Pokedex)
+            {
+                do
+                {
+                    if (ContatoreSaluto == 0)
+                    {
+                        Console.WriteLine("Inserisci il numero del pokémon che vuoi consultare (1-151) o 0 per uscire dal Pokédex:");
+                        Console.Write("<\t");
+                        ContatoreSaluto++;
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        TITOLO();
+                        Console.WriteLine("Inserisci il numero del pokémon che vuoi consultare (1-151) o 0 per uscire dal Pokédex:");
+                        Console.Write("<\t");
+                    }
+                }
+                while (!int.TryParse(Console.ReadLine(), out NumeroPokemon) || NumeroPokemon < 0 || NumeroPokemon > numberOfPokémons);
+                switch (NumeroPokemon)
+                {
+                    case 0:
+                        Pokedex = false;
+                        Console.Clear();
+                        break;
+                    default:
+                        Console.Clear();
+                        TITOLO();
+                        Console.WriteLine($"Pokémon numero {NumeroPokemon}:");
+                        Console.WriteLine($"Nome: {pokémonNames[NumeroPokemon - 1]}");
+                        Console.WriteLine($"Immagine: {pokémonImages[NumeroPokemon - 1]}");
+                        Console.WriteLine($"Tipo: {pokémonTypes[NumeroPokemon - 1]}");
+                        Console.WriteLine($"Resistenza alla cattura: {pokémonCatchResistance[NumeroPokemon - 1]}%");
+                        Console.WriteLine("Premi un tasto per continuare...");
+                        Console.ReadKey();
+                        Console.Clear();
+                        break;
+                }
+            }
+        }
+        static void CATTURA()
+        { 
+            TITOLO();
+        }
+        static void CIAO(ref bool Game)
+        {
+            TITOLO();
+            Console.WriteLine("ARRIVEDERCI!!!");
+            Console.WriteLine("CLICCA QUALSIASI PULSANTE PER USCIRE DAL GIOCO.");
+            Console.ReadKey();
+            Game = false;
+        }
+        static void GAME()
+        {
+            bool Game = true;
+            bool Pokedex = false;
+            int ContatoreSaluto = 0;
+            int NumeroPokemon = 0;
+            string Nome;
+            int Scelta = 0;
+            
+            Nome = LOGIN();
+            
+            while (Game)
+            {
+                MENU(Nome, ref Scelta);
+                switch (Scelta)
+                {
+                    case 1:
+                        POKEDEX(ref Pokedex, ref NumeroPokemon, ref ContatoreSaluto, numberOfPokémons, pokémonNames, pokémonImages, pokémonTypes, pokémonCatchResistance);
+                        break;
+                    case 2:
+                        CATTURA();
+                        break;
+                    case 3:
+                        CIAO(ref Game);
+                        break;
+                }
+            }
         }
     }
 }
