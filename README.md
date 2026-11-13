@@ -1,10 +1,10 @@
 # Informatica - Classi Terze - Esercizio 5.1 - Console Applications
 
-To view the lesson material, see [./lesson/](./lesson/)
+To view the lesson material, see [lesson/](lesson/)
 
 In questa esercitazione andremo a implementare un Pokédex basilare
 
-![Pokémon](assets/pokémon.webp)
+![Pokémon](lesson/assets/pokémon.webp)
 
 > I dati dei pokémon sono forniti tramite vettori paralleli come variabili globali nel `Program.cs`
 
